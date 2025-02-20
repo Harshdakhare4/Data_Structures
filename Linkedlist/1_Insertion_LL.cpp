@@ -62,6 +62,28 @@ void display(Node* head) {
     cout << "NULL" << endl;
 }
 
+
+
+
+//------------------------------//----------------------------------------//
+
+// Function to reverse the linked list
+
+void reverseLL(Node*& head) { // Pass head by reference
+    Node* current = head;
+    Node* prev = NULL;
+    Node* temp = NULL;
+
+    while (current != NULL) {
+        temp = current->next; // Store next node
+        current->next = prev; // Reverse the link
+        prev = current;       // Move prev forward
+        current = temp;       // Move current forward
+    }
+    
+    head = prev; // Update head to new front node
+}
+
 int main() {
     Node* head = NULL; // Initialize head pointer
     insertAtBeg(head, 2);  // Insert node with value 2
@@ -84,6 +106,12 @@ int main() {
     insert_arbitrary(head,45,4);
     display(head);
     cout<<endl;
+
+//---------------------------//-------------------------------//
+ 
+ reverseLL(head);
+display(head);
+
 
     return 0;
 }
